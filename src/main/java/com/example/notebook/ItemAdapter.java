@@ -13,11 +13,13 @@ import java.util.List;
  */
 public class ItemAdapter extends ArrayAdapter<Item> {
     private int resource;
+    private int textViewResourceId;
     private List<Item> items;
 
-    public ItemAdapter(Context context, int resource, List<Item> items) {
-        super(context, resource, items);
+    public ItemAdapter(Context context, int resource, int textViewResourceId, List<Item> items) {
+        super(context, resource, textViewResourceId, items);
         this.resource = resource;
+        this.textViewResourceId = textViewResourceId;
         this.items = items;
     }
 
@@ -28,7 +30,10 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         final Item item = getItem(position);
 
         TextView titleView = (TextView) itemView.findViewById(android.R.id.text1);
+        TextView dateView = (TextView) itemView.findViewById(android.R.id.text2);
+
         titleView.setText(item.getTitle());
+        dateView.setText(item.getLocaleDatetime());
 
         return itemView;
     }

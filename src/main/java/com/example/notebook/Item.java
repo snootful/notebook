@@ -1,5 +1,8 @@
 package com.example.notebook;
 
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created by john on 11/28/15.
  */
@@ -33,6 +36,10 @@ public class Item implements java.io.Serializable{
 
     public long getDatetime() {
         return datetime;
+    }
+
+    public String getLocaleDatetime() {
+        return String.format(Locale.getDefault(), "%tF %<tR", new Date(datetime));
     }
 
     public void setDatetime(long datetime) {

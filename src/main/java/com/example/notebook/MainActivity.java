@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ListView item_list = (ListView) findViewById(R.id.item_list);
-        int layoutId = android.R.layout.simple_list_item_1;
+        int layoutId = android.R.layout.simple_list_item_2;
         itemDAO = new ItemDAO(getApplicationContext());
         if (itemDAO.getCount() == 0) {
             itemDAO.sample();
         }
         items = itemDAO.getAll();
-        itemAdapter = new ItemAdapter(this, layoutId, items);
+        itemAdapter = new ItemAdapter(this, layoutId, android.R.id.text1,items);
         item_list.setAdapter(itemAdapter);
 
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
